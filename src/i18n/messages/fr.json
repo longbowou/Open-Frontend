@@ -1,0 +1,20 @@
+{
+  "TRANSLATOR.SELECT": "choisissez votre langue",
+  "MENU.NEW": "Nouveau",
+  "MENU.ACTIONS": "Actes",
+  "MENU.CREATE_POST": "Créer un nouveau Post",
+  "MENU.PAGES": "Pages",
+  "MENU.FEATURES": "Fonctionnalités",
+  "MENU.APPS": "Applications",
+  "MENU.DASHBOARD": "Tableau de Bord",
+  "AUTH.GENERAL.OR": "Ou",
+  "AUTH.GENERAL.SUBMIT_BUTTON": "Soumettre",
+  "AUTH.GENERAL.NO_ACCOUNT": "Ne pas avoir de compte?",
+  "AUTH.GENERAL.SIGNUP_BUTTON": "Registre",
+  "AUTH.GENERAL.FORGOT_BUTTON": "Mot de passe oublié",
+  "AUTH.GENERAL.BACK_BUTTON": "Back",
+  "AUTH.GENERAL.PRIVACY": "Privacy",
+  "AUTH.GENERAL.LEGAL": "Legal",
+  "AUTH.GENERAL.CONTACT": "Contact",
+  "AUTH.LOGIN.TITLE": "Créer un compte"
+}

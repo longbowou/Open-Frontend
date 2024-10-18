@@ -1,0 +1,5 @@
+services:
+  app:
+    command: pnpm run dev
+    ports:
+      - "3000:3000"

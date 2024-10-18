@@ -1,0 +1,19 @@
+{
+  "TRANSLATOR.SELECT": "Select your language",
+  "MENU.NEW": "new",
+  "MENU.ACTIONS": "Actions",
+  "MENU.CREATE_POST": "Create New Post",
+  "MENU.PAGES": "Pages",
+  "MENU.FEATURES": "Features",
+  "MENU.APPS": "Apps",
+  "MENU.DASHBOARD": "Dashboard",
+  "AUTH.GENERAL.OR": "Or",
+  "AUTH.GENERAL.SUBMIT_BUTTON": "Submit",
+  "AUTH.GENERAL.NO_ACCOUNT": "Don't have an account?",
+  "AUTH.GENERAL.SIGNUP_BUTTON": "Sign Up",
+  "AUTH.GENERAL.FORGOT_BUTTON": "Forgot Password",
+  "AUTH.GENERAL.BACK_BUTTON": "Back",
+  "AUTH.GENERAL.PRIVACY": "Privacy",
+  "AUTH.GENERAL.LEGAL": "Legal",
+  "AUTH.GENERAL.CONTACT": "Contact"
+}

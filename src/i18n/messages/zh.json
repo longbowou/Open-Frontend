@@ -1,0 +1,19 @@
+{
+  "TRANSLATOR.SELECT": "选择你的语言",
+  "MENU.NEW": "新",
+  "MENU.ACTIONS": "行动",
+  "MENU.CREATE_POST": "创建新帖子",
+  "MENU.PAGES": "Pages",
+  "MENU.FEATURES": "特征",
+  "MENU.APPS": "应用",
+  "MENU.DASHBOARD": "仪表板",
+  "AUTH.GENERAL.OR": "要么",
+  "AUTH.GENERAL.SUBMIT_BUTTON": "提交",
+  "AUTH.GENERAL.NO_ACCOUNT": "没有账号？",
+  "AUTH.GENERAL.SIGNUP_BUTTON": "注册",
+  "AUTH.GENERAL.FORGOT_BUTTON": "忘记密码",
+  "AUTH.GENERAL.BACK_BUTTON": "背部",
+  "AUTH.GENERAL.PRIVACY": "隐私",
+  "AUTH.GENERAL.LEGAL": "法律",
+  "AUTH.GENERAL.CONTACT": "联系"
+}

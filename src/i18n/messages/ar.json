@@ -1,0 +1,19 @@
+{
+  "TRANSLATOR.SELECT": "اختر لغتك",
+  "MENU.NEW": "الجديد",
+  "MENU.ACTIONS": "أجراءات",
+  "MENU.CREATE_POST": "إنشاء منشور جديد",
+  "MENU.PAGES": "الصفحات",
+  "MENU.FEATURES": "سمات",
+  "MENU.APPS": "تطبيقات",
+  "MENU.DASHBOARD": "لوحة القيادة",
+  "AUTH.GENERAL.OR": "أو",
+  "AUTH.GENERAL.SUBMIT_BUTTON": "يُقدِّم",
+  "AUTH.GENERAL.NO_ACCOUNT": "ليس لديك حساب؟",
+  "AUTH.GENERAL.SIGNUP_BUTTON": "اشتراك",
+  "AUTH.GENERAL.FORGOT_BUTTON": "هل نسيت كلمة السر",
+  "AUTH.GENERAL.BACK_BUTTON": "خلف",
+  "AUTH.GENERAL.PRIVACY": "خصوصية",
+  "AUTH.GENERAL.LEGAL": "قانوني",
+  "AUTH.GENERAL.CONTACT": "اتصال"
+}
