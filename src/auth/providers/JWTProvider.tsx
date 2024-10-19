@@ -1,29 +1,28 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react-hooks/exhaustive-deps */
 import axios, { AxiosResponse } from 'axios';
-import {
-  createContext,
-  type Dispatch,
-  type PropsWithChildren,
-  type SetStateAction,
-  useEffect,
-  useState
-} from 'react';
+import { createContext, type Dispatch, type PropsWithChildren, type SetStateAction, useEffect, useState } from 'react';
 
 import * as authHelper from '../_helpers';
-import { type AuthModel, type UserModel } from '@/auth';
+import { type UserModel } from '@/auth';
+import { genericErrorMessage } from '@/utils/API.ts';
 
 const API_URL = import.meta.env.VITE_APP_API_URL;
 
 export const GET_USER_BY_ACCESSTOKEN_URL = `${API_URL}/user`;
 export const LOGIN_URL = `${API_URL}/login`;
 export const REGISTER_URL = `${API_URL}/register`;
-export const REQUEST_PASSWORD_URL = `${API_URL}/forgotpassword`;
+export const REQUEST_PASSWORD_URL = `${API_URL}/forgot-password`;
+
+export interface ErrorMessage {
+  field: string;
+  message: string;
+}
 
 interface AuthContextProps {
   isLoading: boolean;
-  auth: AuthModel | undefined;
-  saveAuth: (auth: AuthModel | undefined) => void;
+  auth: string | undefined;
+  saveAuth: (auth: string | undefined) => void;
   currentUser: UserModel | undefined;
   setCurrentUser: Dispatch<SetStateAction<UserModel | undefined>>;
   login: (email: string, password: string) => Promise<void>;
@@ -31,12 +30,14 @@ interface AuthContextProps {
   loginWithFacebook?: () => Promise<void>;
   loginWithGithub?: () => Promise<void>;
   register: (
+    name: string,
     email: string,
+    address: string,
     password: string,
-    firstname?: string,
-    lastname?: string,
-    password_confirmation?: string
-  ) => Promise<void>;
+    passwordConfirmation: string,
+    fileName: string,
+    contentType: string
+  ) => Promise<any>;
   requestPassword: (email: string) => Promise<void>;
   getUser: () => Promise<AxiosResponse<any>>;
   logout: () => void;
@@ -47,8 +48,9 @@ const AuthContext = createContext<AuthContextProps | null>(null);
 
 const AuthProvider = ({ children }: PropsWithChildren) => {
   const [loading, setLoading] = useState(true);
-  const [auth, setAuth] = useState<AuthModel | undefined>(authHelper.getAuth());
+  const [auth, setAuth] = useState<string | undefined>(authHelper.getAuth());
   const [currentUser, setCurrentUser] = useState<UserModel | undefined>();
+  const [errors, setErrors] = useState<Array<ErrorMessage>>([]);
 
   // Verity user session and validate bearer authentication
   const verify = async () => {
@@ -71,7 +73,7 @@ const AuthProvider = ({ children }: PropsWithChildren) => {
   }, []);
 
   // Set auth object and save it to local storage
-  const saveAuth = (auth: AuthModel | undefined) => {
+  const saveAuth = (auth: string | undefined) => {
     setAuth(auth);
     if (auth) {
       authHelper.setAuth(auth);
@@ -83,7 +85,7 @@ const AuthProvider = ({ children }: PropsWithChildren) => {
   // Login user with email and password
   const login = async (email: string, password: string) => {
     try {
-      const { data: auth } = await axios.post<AuthModel>(LOGIN_URL, {
+      const { data: auth } = await axios.post(LOGIN_URL, {
         email,
         password
       });
@@ -98,26 +100,36 @@ const AuthProvider = ({ children }: PropsWithChildren) => {
 
   // Register user using default registration information
   const register = async (
+    name: string,
     email: string,
+    address: string,
     password: string,
-    firstname?: string,
-    lastname?: string,
-    password_confirmation?: string
+    passwordConfirmation: string,
+    fileName: string,
+    contentType: string
   ) => {
     try {
-      const { data: auth } = await axios.post(REGISTER_URL, {
+      const response = await axios.post(REGISTER_URL, {
+        name,
         email,
-        first_name: 'DefaultName',
-        last_name: 'DefaultSurname',
+        address,
         password,
-        password_confirmation
+        passwordConfirmation,
+        fileName,
+        contentType
       });
-      saveAuth(auth);
-      const { data: user } = await getUser();
-      setCurrentUser(user);
+
+      return response.data;
     } catch (error) {
       saveAuth(undefined);
-      throw new Error(`Error ${error}`);
+      return {
+        errors: [
+          {
+            field: 'name',
+            message: genericErrorMessage
+          }
+        ]
+      };
     }
   };
 

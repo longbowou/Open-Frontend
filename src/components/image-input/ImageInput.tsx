@@ -1,12 +1,11 @@
 /* eslint-disable no-unused-vars */
-import { ChangeEvent, DragEvent, FC, useCallback, useRef, useState } from 'react';
+import React, { ChangeEvent, DragEvent, FC, useCallback, useRef, useState } from 'react';
 import { getAcceptTypeString, getListFiles, openFileDialog } from './utils';
-
-import React from 'react';
 
 interface IImageInputFile {
   dataURL?: string;
   file?: File;
+
   [key: string]: any;
 }
 
@@ -68,7 +67,6 @@ const ImageInput: FC<IImageInputProps> = ({
   }, [handleClickInput]);
 
   const onInputChange = async (e: ChangeEvent<HTMLInputElement>): Promise<void> => {
-    console.log('onInputChange');
     await handleChange(e.target.files);
     if (inputRef.current) inputRef.current.value = '';
   };

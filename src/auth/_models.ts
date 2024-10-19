@@ -1,24 +1,8 @@
-import { type LanguageCodeType } from '@/i18n';
-
-export interface AuthModel {
-  access_token: string;
-  refreshToken?: string;
-  api_token: string;
-}
-
 export interface UserModel {
-  id: number;
-  username: string;
-  password: string | undefined;
+  id: string;
+  name: string;
   email: string;
-  first_name: string;
-  last_name: string;
-  fullname?: string;
-  occupation?: string;
-  companyName?: string;
-  phone?: string;
-  roles?: number[];
-  pic?: string;
-  language?: LanguageCodeType;
-  auth?: AuthModel;
+  address: string;
+  imageUrl?: string;
+  createdOn: string;
 }
