@@ -64,7 +64,7 @@ const Signup = () => {
         const fileName = encodeURIComponent(image!.file!.name);
         const contentType = image!.file!.type;
 
-        const result = await register(
+        const response = await register(
           values.name,
           values.email,
           values.address,
@@ -74,14 +74,14 @@ const Signup = () => {
           contentType
         );
 
-        const errors: Array<ErrorMessage> = result.errors;
+        const errors: Array<ErrorMessage> = response.errors;
         if (errors && errors.length > 0) {
           for (const error of errors) {
             setFieldError(error.field, error.message);
           }
           setLoading(false);
         } else {
-          uploadImageToS3(result.uploadURL, image!.file!)
+          uploadImageToS3(response.uploadURL, image!.file!)
             .then(() => {
               navigate(from, { replace: true });
             })

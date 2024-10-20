@@ -9,7 +9,7 @@ import { genericErrorMessage } from '@/utils/API.ts';
 
 const API_URL = import.meta.env.VITE_APP_API_URL;
 
-export const GET_USER_BY_ACCESSTOKEN_URL = `${API_URL}/user`;
+export const FETCH_USER_URL = `${API_URL}/fetch-user`;
 export const LOGIN_URL = `${API_URL}/login`;
 export const REGISTER_URL = `${API_URL}/register`;
 export const REQUEST_PASSWORD_URL = `${API_URL}/forgot-password`;
@@ -25,10 +25,7 @@ interface AuthContextProps {
   saveAuth: (auth: string | undefined) => void;
   currentUser: UserModel | undefined;
   setCurrentUser: Dispatch<SetStateAction<UserModel | undefined>>;
-  login: (email: string, password: string) => Promise<void>;
-  loginWithGoogle?: () => Promise<void>;
-  loginWithFacebook?: () => Promise<void>;
-  loginWithGithub?: () => Promise<void>;
+  login: (email: string, password: string) => Promise<any>;
   register: (
     name: string,
     email: string,
@@ -52,25 +49,25 @@ const AuthProvider = ({ children }: PropsWithChildren) => {
   const [currentUser, setCurrentUser] = useState<UserModel | undefined>();
   const [errors, setErrors] = useState<Array<ErrorMessage>>([]);
 
-  // Verity user session and validate bearer authentication
-  const verify = async () => {
-    if (auth) {
-      try {
-        const { data: user } = await getUser();
-        setCurrentUser(user);
-      } catch (error) {
-        saveAuth(undefined);
-        setCurrentUser(undefined);
-      }
-    }
-  };
-
   useEffect(() => {
     verify().finally(() => {
       // delay for layout initialization
       setLoading(false);
     });
   }, []);
+
+  // Verity user session and validate bearer authentication
+  const verify = async () => {
+    if (auth) {
+      try {
+        const response = await fetchUser();
+        setCurrentUser(response.data.user);
+      } catch (error) {
+        saveAuth(undefined);
+        setCurrentUser(undefined);
+      }
+    }
+  };
 
   // Set auth object and save it to local storage
   const saveAuth = (auth: string | undefined) => {
@@ -85,16 +82,27 @@ const AuthProvider = ({ children }: PropsWithChildren) => {
   // Login user with email and password
   const login = async (email: string, password: string) => {
     try {
-      const { data: auth } = await axios.post(LOGIN_URL, {
+      const response = await axios.post(LOGIN_URL, {
         email,
         password
       });
-      saveAuth(auth);
-      const { data: user } = await getUser();
-      setCurrentUser(user);
+
+      if (response.data.errors && response.data.errors.length == 0) {
+        saveAuth(response.data.authToken);
+        setCurrentUser(response.data.user);
+      }
+
+      return response.data;
     } catch (error) {
       saveAuth(undefined);
-      throw new Error(`Error ${error}`);
+      return {
+        errors: [
+          {
+            field: 'name',
+            message: genericErrorMessage
+          }
+        ]
+      };
     }
   };
 
@@ -141,8 +149,8 @@ const AuthProvider = ({ children }: PropsWithChildren) => {
   };
 
   // Returns user by using bearer authentication token
-  const getUser = async () => {
-    return await axios.get<UserModel>(GET_USER_BY_ACCESSTOKEN_URL);
+  const fetchUser = async () => {
+    return await axios.get(FETCH_USER_URL);
   };
 
   // Delete auth local storage and resets current user state
@@ -162,7 +170,7 @@ const AuthProvider = ({ children }: PropsWithChildren) => {
         login,
         register,
         requestPassword,
-        getUser,
+        getUser: fetchUser,
         logout,
         verify
       }}

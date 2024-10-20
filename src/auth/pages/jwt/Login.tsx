@@ -4,9 +4,10 @@ import clsx from 'clsx';
 import * as Yup from 'yup';
 import { useFormik } from 'formik';
 import { KeenIcon } from '@/components';
-import { toAbsoluteUrl } from '@/utils';
 import { useAuthContext } from '@/auth';
 import { useLayout } from '@/providers';
+import { ErrorMessage } from '@/auth/providers/JWTProvider.tsx';
+import { genericErrorMessage } from '@/utils/API.ts';
 
 const loginSchema = Yup.object().shape({
   email: Yup.string()
@@ -22,8 +23,8 @@ const loginSchema = Yup.object().shape({
 });
 
 const initialValues = {
-  email: 'demo@keenthemes.com',
-  password: 'demo1234',
+  email: '',
+  password: '',
   remember: false
 };
 
@@ -39,7 +40,7 @@ const Login = () => {
   const formik = useFormik({
     initialValues,
     validationSchema: loginSchema,
-    onSubmit: async (values, { setStatus, setSubmitting }) => {
+    onSubmit: async (values, { setStatus, setSubmitting, setFieldError }) => {
       setLoading(true);
 
       try {
@@ -47,17 +48,25 @@ const Login = () => {
           throw new Error('JWTProvider is required for this form.');
         }
 
-        await login(values.email, values.password);
+        const response = await login(values.email, values.password);
 
-        if (values.remember) {
-          localStorage.setItem('email', values.email);
+        const errors: Array<ErrorMessage> = response.errors;
+        if (errors && errors.length > 0) {
+          for (const error of errors) {
+            setFieldError(error.field, error.message);
+          }
+          setLoading(false);
         } else {
-          localStorage.removeItem('email');
-        }
+          if (values.remember) {
+            localStorage.setItem('email', values.email);
+          } else {
+            localStorage.removeItem('email');
+          }
 
-        navigate(from, { replace: true });
+          navigate(from, { replace: true });
+        }
       } catch {
-        setStatus('The login details are incorrect');
+        setStatus(genericErrorMessage);
         setSubmitting(false);
       }
       setLoading(false);
@@ -89,47 +98,11 @@ const Login = () => {
           </div>
         </div>
 
-        <div className="grid grid-cols-2 gap-2.5">
-          <a href="#" className="btn btn-light btn-sm justify-center">
-            <img
-              src={toAbsoluteUrl('/media/brand-logos/google.svg')}
-              className="size-3.5 shrink-0"
-            />
-            Use Google
-          </a>
-
-          <a href="#" className="btn btn-light btn-sm justify-center">
-            <img
-              src={toAbsoluteUrl('/media/brand-logos/apple-black.svg')}
-              className="size-3.5 shrink-0 dark:hidden"
-            />
-            <img
-              src={toAbsoluteUrl('/media/brand-logos/apple-white.svg')}
-              className="size-3.5 shrink-0 light:hidden"
-            />
-            Use Apple
-          </a>
-        </div>
-
-        <div className="flex items-center gap-2">
-          <span className="border-t border-gray-200 w-full"></span>
-          <span className="text-2xs text-gray-500 font-medium uppercase">Or</span>
-          <span className="border-t border-gray-200 w-full"></span>
-        </div>
-
-        <div className="flex gap-2.5 border border-primary-clarity rounded-md p-3 bg-primary-light">
-          <KeenIcon icon="information-2" style="solid" className="text-primary text-lg" />
-          <div className="text-gray-700 text-xs">
-            Use <span className="font-semibold text-gray-900">demo@keenthemes.com</span> username
-            with <span className="font-semibold text-gray-900">demo1234</span> password.
-          </div>
-        </div>
-
         <div className="flex flex-col gap-1">
           <label className="form-label text-gray-900">Email</label>
           <label className="input">
             <input
-              placeholder="Enter username"
+              placeholder="Enter Email"
               autoComplete="off"
               {...formik.getFieldProps('email')}
               className={clsx('form-control', {
@@ -145,19 +118,7 @@ const Login = () => {
         </div>
 
         <div className="flex flex-col gap-1">
-          <div className="flex items-center justify-between gap-1">
-            <label className="form-label text-gray-900">Password</label>
-            <Link
-              to={
-                currentLayout?.name === 'auth-branded'
-                  ? '/auth/reset-password'
-                  : '/auth/classic/reset-password'
-              }
-              className="text-2sm link shrink-0"
-            >
-              Forgot Password?
-            </Link>
-          </div>
+          <label className="form-label text-gray-900">Password</label>
           <label className="input">
             <input
               type={showPassword ? 'text' : 'password'}
