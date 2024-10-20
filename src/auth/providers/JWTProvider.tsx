@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react-hooks/exhaustive-deps */
-import axios, { AxiosResponse } from 'axios';
+import axios from 'axios';
 import { createContext, type Dispatch, type PropsWithChildren, type SetStateAction, useEffect, useState } from 'react';
 
 import * as authHelper from '../_helpers';
@@ -36,7 +36,6 @@ interface AuthContextProps {
     contentType: string
   ) => Promise<any>;
   requestPassword: (email: string) => Promise<void>;
-  getUser: () => Promise<AxiosResponse<any>>;
   logout: () => void;
   verify: () => Promise<void>;
 }
@@ -170,7 +169,6 @@ const AuthProvider = ({ children }: PropsWithChildren) => {
         login,
         register,
         requestPassword,
-        getUser: fetchUser,
         logout,
         verify
       }}

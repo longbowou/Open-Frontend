@@ -6,23 +6,26 @@ import { Container } from '@/components/container';
 import { UserProfileHero } from '@/partials/heros';
 
 import { ProfileDefaultContent } from '@/pages';
+import { useAuthContext } from '@/auth';
 
 const ProfileDefaultPage = () => {
+  const { currentUser } = useAuthContext();
+
   const image = (
     <img
-      src={toAbsoluteUrl('/media/avatars/300-1.png')}
-      className="rounded-full border-3 border-success max-h-[150px] max-w-full"
+      src={currentUser?.imageUrl ?? toAbsoluteUrl('/media/avatars/empty.jpg')}
+      className="rounded-full border-3 border-success h-[150px] w-[150px] object-cover"
     />
   );
 
   return (
     <Fragment>
       <UserProfileHero
-        name="Jenny Klabber"
+        name={currentUser?.name}
         image={image}
         info={[
-          { email: 'jenny@kteam.com', icon: 'sms' },
-          { label: 'SF, Bay Area', icon: 'geolocation' },
+          { email: currentUser?.email, icon: 'sms' },
+          { label: currentUser?.address, icon: 'geolocation' }
         ]}
       />
 

@@ -6,12 +6,13 @@ import { KeenIcon } from '@/components';
 interface CrudAvatarUploadProps {
   inputProps?: React.HTMLProps<HTMLInputElement>;
   size?: string;
+  dataURL?: string;
   onChange?: (value: IImageInputFile | null) => void;
 }
 
-const CrudAvatarUpload: FC<CrudAvatarUploadProps> = ({ inputProps, size, onChange }) => {
+const CrudAvatarUpload: FC<CrudAvatarUploadProps> = ({ inputProps, size, onChange, dataURL }) => {
   const [avatar, setAvatar] = useState<IImageInputFile[]>([
-    { dataURL: toAbsoluteUrl(`/media/avatars/empty.jpg`) }
+    { dataURL: dataURL ?? toAbsoluteUrl(`/media/avatars/empty.jpg`) }
   ]);
 
   return (
