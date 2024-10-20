@@ -1,9 +1,80 @@
 import { KeenIcon } from '@/components';
-
-import { CrudAvatarUpload } from '@/partials/crud';
 import { Link } from 'react-router-dom';
+import clsx from 'clsx';
+import { useFormik } from 'formik';
+import { genericErrorMessage } from '@/utils/API.ts';
+import { useState } from 'react';
+import * as Yup from 'yup';
+import { useAuthContext } from '@/auth';
+
+const signupSchema = Yup.object().shape({
+  name: Yup.string().required('Name is required'),
+  address: Yup.string().required('Name is required'),
+  email: Yup.string()
+    .email('Wrong email format')
+    .min(3, 'Minimum 3 symbols')
+    .max(50, 'Maximum 50 symbols')
+    .required('Email is required')
+});
 
 const UpdatePersonalInfo = () => {
+  const [loading, setLoading] = useState(false);
+  const { currentUser } = useAuthContext();
+
+  const initialValues = {
+    name: currentUser?.name,
+    address: currentUser?.address,
+    email: currentUser?.email
+  };
+
+  const formik = useFormik({
+    initialValues,
+    validationSchema: signupSchema,
+    onSubmit: async (values, { setStatus, setSubmitting, setFieldError }) => {
+      setLoading(true);
+      try {
+        // if (!register) {
+        //   throw new Error('JWTProvider is required for this form.');
+        // }
+        //
+        // const fileName = encodeURIComponent(image!.file!.name);
+        // const contentType = image!.file!.type;
+        //
+        // const response = await register(
+        //   values.name,
+        //   values.email,
+        //   values.address,
+        //   values.password,
+        //   values.passwordConfirmation,
+        //   fileName,
+        //   contentType
+        // );
+        //
+        // const errors: Array<ErrorMessage> = response.errors;
+        // if (errors && errors.length > 0) {
+        //   for (const error of errors) {
+        //     setFieldError(error.field, error.message);
+        //   }
+        //   setLoading(false);
+        // } else {
+        //   uploadImageToS3(response.uploadURL, image!.file!)
+        //     .then(() => {
+        //       navigate(from, { replace: true });
+        //     })
+        //     .catch(() => {
+        //       setFieldError('name', genericErrorMessage);
+        //       setLoading(false);
+        //     });
+        // }
+      } catch (error) {
+        console.error(error);
+        setStatus(genericErrorMessage);
+        setSubmitting(false);
+        setLoading(false);
+      }
+    }
+  });
+
   return (
     <div className="card min-w-full">
       <div className="card-header">
@@ -16,70 +87,95 @@ const UpdatePersonalInfo = () => {
       </div>
 
       <div className="card-table scrollable-x-auto pb-3">
-        <table className="table align-middle text-sm text-gray-500">
-          <tbody>
-            <tr>
-              <td className="py-2 min-w-28 text-gray-600 font-normal">Photo</td>
-              <td className="py-2 text-gray700 font-normal min-w-32 text-2sm">
-                150x150px JPEG, PNG Image
-              </td>
-              <td className="py-2 text-center">
-                <div className="flex justify-center items-center">
-                  <CrudAvatarUpload />
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td className="py-2 text-gray-600 font-normal">Name</td>
-              <td className="py-2 text-gray-800 font-normaltext-sm">Jason Tatum</td>
-              <td className="py-2 text-center">
-                <a href="#" className="btn btn-sm btn-icon btn-clear btn-primary">
-                  <KeenIcon icon="notepad-edit" />
-                </a>
-              </td>
-            </tr>
-            <tr>
-              <td className="py-3 text-gray-600 font-normal">Availability</td>
-              <td className="py-3 text-gray-800 font-normal">
-                <span className="badge badge-sm badge-outline badge-success">Available now</span>
-              </td>
-              <td className="py-3 text-center">
-                <a href="#" className="btn btn-sm btn-icon btn-clear btn-primary">
-                  <KeenIcon icon="notepad-edit" />
-                </a>
-              </td>
-            </tr>
-            <tr>
-              <td className="py-3 text-gray-600 font-normal">Birthday</td>
-              <td className="py-3 text-gray-700 text-sm font-normal">28 May 1996</td>
-              <td className="py-3 text-center">
-                <a href="#" className="btn btn-sm btn-icon btn-clear btn-primary">
-                  <KeenIcon icon="notepad-edit" />
-                </a>
-              </td>
-            </tr>
-            <tr>
-              <td className="py-3 text-gray-600 font-normal">Gender</td>
-              <td className="py-3 text-gray-700 text-sm font-normal">Male</td>
-              <td className="py-3 text-center">
-                <a href="#" className="btn btn-sm btn-icon btn-clear btn-primary">
-                  <KeenIcon icon="notepad-edit" />
-                </a>
-              </td>
-            </tr>
-            <tr>
-              <td className="py-3">Address</td>
-              <td className="py-3 text-gray-700 text-2sm font-normal">
-                You have no an address yet
-              </td>
-              <td className="py-3 text-center">
-                <a href="#" className="btn btn-link btn-sm">
-                  Add
-                </a>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+        <form
+          className="card-body flex flex-col gap-5 p-10"
+          noValidate
+          onSubmit={formik.handleSubmit}
+        >
+          <div className="flex flex-col gap-1">
+            <label className="form-label text-gray-900">Full Name</label>
+            <label className="input">
+              <input
+                placeholder="Enter yout full name"
+                autoFocus={true}
+                type="text"
+                {...formik.getFieldProps('name')}
+                className={clsx(
+                  'form-control bg-transparent',
+                  { 'is-invalid': formik.touched.name && formik.errors.name },
+                  {
+                    'is-valid': formik.touched.name && !formik.errors.name
+                  }
+                )}
+              />
+            </label>
+            {formik.touched.name && formik.errors.name && (
+              <span role="alert" className="text-danger text-xs mt-1">
+                {formik.errors.name}
+              </span>
+            )}
+          </div>
+
+          <div className="flex flex-col gap-1">
+            <label className="form-label text-gray-900">Email</label>
+            <label className="input">
+              <input
+                placeholder="Enter your email"
+                type="email"
+                {...formik.getFieldProps('email')}
+                className={clsx(
+                  'form-control bg-transparent',
+                  { 'is-invalid': formik.touched.email && formik.errors.email },
+                  {
+                    'is-valid': formik.touched.email && !formik.errors.email
+                  }
+                )}
+              />
+            </label>
+            {formik.touched.email && formik.errors.email && (
+              <span role="alert" className="text-danger text-xs mt-1">
+                {formik.errors.email}
+              </span>
+            )}
+          </div>
+
+          <div className="flex flex-col gap-1">
+            <label className="form-label text-gray-900">Address</label>
+            <label className="input">
+              <input
+                placeholder="Enter your address"
+                type="email"
+                {...formik.getFieldProps('address')}
+                className={clsx(
+                  'form-control bg-transparent',
+                  { 'is-invalid': formik.touched.address && formik.errors.address },
+                  {
+                    'is-valid': formik.touched.address && !formik.errors.address
+                  }
+                )}
+              />
+            </label>
+            {formik.touched.address && formik.errors.address && (
+              <span role="alert" className="text-danger text-xs mt-1">
+                {formik.errors.address}
+              </span>
+            )}
+          </div>
+
+          <button
+            type="submit"
+            className="btn btn-primary flex justify-center grow"
+            disabled={loading || formik.isSubmitting}
+          >
+            {loading ? 'Please wait...' : 'Submit'}
+          </button>
+
+          {formik.status && (
+            <div className="text-danger text-xs mt-1" role="alert">
+              {formik.status}
+            </div>
+          )}
+        </form>
       </div>
     </div>
   );

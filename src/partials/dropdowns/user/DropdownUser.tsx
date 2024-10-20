@@ -9,6 +9,7 @@ import { useAuthContext } from '@/auth';
 const DropdownUser = () => {
   const { settings, storeSettings } = useSettings();
   const { logout } = useAuthContext();
+  const { currentUser } = useAuthContext();
 
   const handleThemeMode = (event: ChangeEvent<HTMLInputElement>) => {
     console.log('checked:' + event.target.checked);
@@ -24,8 +25,8 @@ const DropdownUser = () => {
       <div className="flex items-center justify-between px-5 py-1.5 gap-1.5">
         <div className="flex items-center gap-2">
           <img
-            className="size-9 rounded-full border-2 border-success"
-            src={toAbsoluteUrl('/media/avatars/300-2.png')}
+            className="size-10 rounded-full border-2 border-success object-cover"
+            src={currentUser?.imageUrl ?? toAbsoluteUrl('/media/avatars/300-2.png')}
             alt=""
           />
           <div className="flex flex-col gap-1.5">
@@ -33,17 +34,16 @@ const DropdownUser = () => {
               to="/account/hoteme/get-stard"
               className="text-sm text-gray-800 hover:text-primary font-semibold leading-none"
             >
-              Cody Fisher
+              {currentUser?.name}
             </Link>
             <a
-              href="mailto:c.fisher@gmail.com"
+              href={`mailto:${currentUser?.email}`}
               className="text-xs text-gray-600 hover:text-primary font-medium leading-none"
             >
-              c.fisher@gmail.com
+              {currentUser?.email}
             </a>
           </div>
         </div>
-        <span className="badge badge-xs badge-primary badge-outline">Pro</span>
       </div>
     );
   };

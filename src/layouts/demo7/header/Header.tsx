@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 import { Container } from '@/components/container';
-import { HeaderLogo, HeaderTopbar } from '.';
+import { HeaderLogo, HeaderTopBar } from '.';
 import { useDemo7Layout } from '..';
 import { useEffect } from 'react';
 
@@ -25,7 +25,7 @@ const Header = () => {
     >
       <Container className="flex flex-wrap gap-2 items-center lg:gap-4">
         <HeaderLogo />
-        <HeaderTopbar />
+        <HeaderTopBar />
       </Container>
     </header>
   );

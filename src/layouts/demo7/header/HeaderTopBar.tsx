@@ -1,9 +1,10 @@
-import { KeenIcon } from '@/components/keenicons';
 import { Menu, MenuItem, MenuToggle } from '@/components';
 import { DropdownUser } from '@/partials/dropdowns/user';
-import { Link } from 'react-router-dom';
+import { useAuthContext } from '@/auth';
 
-const HeaderTopbar = () => {
+const HeaderTopBar = () => {
+  const { currentUser } = useAuthContext();
+
   return (
     <div className="flex items-center flex-wrap gap-2 lg:gap-3.5">
       <Menu className="items-stretch">
@@ -25,7 +26,7 @@ const HeaderTopbar = () => {
           <MenuToggle>
             <div className="menu-item">
               <div className="menu-toggle size-[34px] rounded-full inline-flex items-center justify-center relative text-lg font-medium border border-gray-300 bg-gray-100 text-gray-800">
-                S
+                {currentUser?.name[0]}
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="15"
@@ -49,4 +50,4 @@ const HeaderTopbar = () => {
   );
 };
 
-export { HeaderTopbar };
+export { HeaderTopBar };
