@@ -26,7 +26,7 @@ const PersonalInfo = () => {
               <td className="py-2 text-gray-600 font-normal">Name</td>
               <td className="py-2 text-gray-800 font-normaltext-sm">{currentUser?.name}</td>
               <td className="py-2 text-center">
-                <Link to="/update" className="btn btn-sm btn-icon btn-clear btn-primary">
+                <Link to="/update" className="btn btn-sm btn-icon btn-clear btn-light">
                   <KeenIcon icon="notepad-edit" />
                 </Link>
               </td>
@@ -35,7 +35,7 @@ const PersonalInfo = () => {
               <td className="py-2 text-gray-600 font-normal">Email</td>
               <td className="py-2 text-gray-800 font-normaltext-sm">{currentUser?.email}</td>
               <td className="py-2 text-center">
-                <Link to="/update" className="btn btn-sm btn-icon btn-clear btn-primary">
+                <Link to="/update" className="btn btn-sm btn-icon btn-clear btn-light">
                   <KeenIcon icon="notepad-edit" />
                 </Link>
               </td>
@@ -44,7 +44,7 @@ const PersonalInfo = () => {
               <td className="py-3">Address</td>
               <td className="py-3 text-gray-800 font-normaltext-sm">{currentUser?.address}</td>
               <td className="py-3 text-center">
-                <Link to="/update" className="btn btn-sm btn-icon btn-clear btn-primary">
+                <Link to="/update" className="btn btn-sm btn-icon btn-clear btn-light">
                   <KeenIcon icon="notepad-edit" />
                 </Link>
               </td>
@@ -53,7 +53,7 @@ const PersonalInfo = () => {
               <td className="py-3">Password</td>
               <td className="py-3 text-gray-800 font-normaltext-sm">*****</td>
               <td className="py-3 text-center">
-                <Link to="/password" className="btn btn-sm btn-icon btn-clear btn-primary">
+                <Link to="/password" className="btn btn-sm btn-icon btn-clear btn-light">
                   <KeenIcon icon="notepad-edit" />
                 </Link>
               </td>
