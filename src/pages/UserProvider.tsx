@@ -3,7 +3,7 @@
 import axios from 'axios';
 import { createContext, type PropsWithChildren } from 'react';
 import { genericErrorMessage, uploadImageToS3 } from '@/utils/API.ts';
-import { useAuthContext } from '@/auth';
+import { useAuthContext, UserModel } from '@/auth';
 
 const API_URL = import.meta.env.VITE_APP_API_URL;
 
@@ -77,8 +77,10 @@ const UserProvider = ({ children }: PropsWithChildren) => {
 
       if (response.data.errors && response.data.errors.length == 0) {
         await uploadImageToS3(response.data.uploadURL, file).then(() => {
-          currentUser!.imageUrl = response.data.imageUrl;
-          setCurrentUser(currentUser);
+          setCurrentUser({
+            ...currentUser,
+            imageUrl: response.data.imageUrl
+          } as UserModel);
         });
       }
 
