@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 import { useFormik } from 'formik';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import * as Yup from 'yup';
 
@@ -50,6 +50,10 @@ const Signup = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const { currentLayout } = useLayout();
+
+  useEffect(() => {
+    document.title = 'Login - Open';
+  }, []);
 
   const formik = useFormik({
     initialValues,

@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import clsx from 'clsx';
 import { useFormik } from 'formik';
 import { genericErrorMessage } from '@/utils/API.ts';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import * as Yup from 'yup';
 import { ErrorMessage } from '@/auth/providers/JWTProvider.tsx';
 import { useUserContext } from '@/pages/useUserContext.ts';
@@ -38,6 +38,10 @@ const UpdatePassword = () => {
   const [showCurrentPassword, setShowCurrentPassword] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+
+  useEffect(() => {
+    document.title = 'Update Personal Info - Open';
+  }, []);
 
   const toggleCurrentPassword = (event: { preventDefault: () => void }) => {
     event.preventDefault();

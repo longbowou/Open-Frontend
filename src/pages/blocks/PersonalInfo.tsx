@@ -4,13 +4,17 @@ import { CrudAvatarUpload } from '@/partials/crud';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuthContext } from '@/auth';
 import { useUserContext } from '@/pages/useUserContext.ts';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const PersonalInfo = () => {
   const { currentUser } = useAuthContext();
   const { updateImage } = useUserContext();
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    document.title = 'Home - Open';
+  }, []);
 
   const uploadImage = async (file: File) => {
     setIsLoading(true);

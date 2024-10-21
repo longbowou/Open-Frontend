@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import clsx from 'clsx';
 import { useFormik } from 'formik';
 import { genericErrorMessage } from '@/utils/API.ts';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import * as Yup from 'yup';
 import { useAuthContext } from '@/auth';
 import { useUserContext } from '@/pages/useUserContext.ts';
@@ -24,6 +24,10 @@ const UpdatePersonalInfo = () => {
   const { currentUser } = useAuthContext();
   const { updateProfile } = useUserContext();
   const navigate = useNavigate();
+
+  useEffect(() => {
+    document.title = 'Update Password - Open';
+  }, []);
 
   const initialValues = {
     name: currentUser?.name,
