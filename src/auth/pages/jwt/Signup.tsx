@@ -10,7 +10,7 @@ import { useLayout } from '@/providers';
 import { CrudAvatarUpload } from '@/partials/crud';
 import { IImageInputFile } from '@/components/image-input';
 import { ErrorMessage } from '@/auth/providers/JWTProvider.tsx';
-import { genericErrorMessage, uploadImageToS3 } from '@/utils/API.ts';
+import { genericErrorMessage } from '@/utils/API.ts';
 
 const initialValues = {
   name: '',
@@ -61,16 +61,12 @@ const Signup = () => {
           throw new Error('JWTProvider is required for this form.');
         }
 
-        const fileName = encodeURIComponent(image!.file!.name);
-        const contentType = image!.file!.type;
-
         const response = await register(
           values.name,
           values.email,
           values.address,
           values.password,
-          fileName,
-          contentType
+          image!.file!
         );
 
         const errors: Array<ErrorMessage> = response.errors;
@@ -80,14 +76,7 @@ const Signup = () => {
           }
           setLoading(false);
         } else {
-          uploadImageToS3(response.uploadURL, image!.file!)
-            .then(() => {
-              navigate(from, { replace: true });
-            })
-            .catch(() => {
-              setFieldError('name', genericErrorMessage);
-              setLoading(false);
-            });
+          navigate(from, { replace: true });
         }
       } catch (error) {
         console.error(error);

@@ -7,10 +7,17 @@ interface CrudAvatarUploadProps {
   inputProps?: React.HTMLProps<HTMLInputElement>;
   size?: string;
   dataURL?: string;
+  isLoading?: boolean;
   onChange?: (value: IImageInputFile | null) => void;
 }
 
-const CrudAvatarUpload: FC<CrudAvatarUploadProps> = ({ inputProps, size, onChange, dataURL }) => {
+const CrudAvatarUpload: FC<CrudAvatarUploadProps> = ({
+  inputProps,
+  size,
+  onChange,
+  dataURL,
+  isLoading
+}) => {
   const [avatar, setAvatar] = useState<IImageInputFile[]>([
     { dataURL: dataURL ?? toAbsoluteUrl(`/media/avatars/empty.jpg`) }
   ]);
@@ -32,7 +39,9 @@ const CrudAvatarUpload: FC<CrudAvatarUploadProps> = ({ inputProps, size, onChang
     >
       {({ onImageUpload }) => (
         <div className={`image-input ${size ?? 'size-40'}`} onClick={onImageUpload}>
-          <div className="image-input-placeholder animate-pulse rounded-full border-2 border-success image-input-empty:border-gray-300">
+          <div
+            className={`image-input-placeholder ${isLoading ? 'animate-pulse' : ''} rounded-full border-2 border-success image-input-empty:border-gray-300`}
+          >
             {avatar.length > 0 && <img src={avatar[0].dataURL} alt="avatar" />}
             <div className="flex items-center justify-center cursor-pointer h-9 left-0 right-0 bottom-0 bg-dark-clarity absolute">
               <KeenIcon icon="cloud-add" className="text-white text-3xl" />

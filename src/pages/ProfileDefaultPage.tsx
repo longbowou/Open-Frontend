@@ -12,10 +12,13 @@ const ProfileDefaultPage = () => {
   const { currentUser } = useAuthContext();
 
   const image = (
-    <img
-      src={currentUser?.imageUrl ?? toAbsoluteUrl('/media/avatars/empty.jpg')}
-      className="rounded-full border-3 border-success h-[150px] w-[150px] object-cover"
-    />
+    <>
+      <img
+        src={currentUser?.imageUrl ?? toAbsoluteUrl('/media/avatars/empty.jpg')}
+        className="rounded-full border-3 border-success h-[150px] w-[150px] object-cover"
+        alt="avatar"
+      />
+    </>
   );
 
   return (

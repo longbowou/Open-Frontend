@@ -3,9 +3,21 @@ import { KeenIcon } from '@/components';
 import { CrudAvatarUpload } from '@/partials/crud';
 import { Link } from 'react-router-dom';
 import { useAuthContext } from '@/auth';
+import { useUserContext } from '@/pages/useUserContext.ts';
+import { useState } from 'react';
 
 const PersonalInfo = () => {
   const { currentUser } = useAuthContext();
+  const { updateImage } = useUserContext();
+  const [isLoading, setIsLoading] = useState(false);
+
+  const uploadImage = async (file: File) => {
+    setIsLoading(true);
+
+    await updateImage(file);
+
+    setIsLoading(false);
+  };
 
   return (
     <div className="card min-w-full">
@@ -18,7 +30,15 @@ const PersonalInfo = () => {
             <tr>
               <td className="py-2 text-center" colSpan={3}>
                 <div className="flex justify-center items-center my-7">
-                  <CrudAvatarUpload dataURL={currentUser?.imageUrl} />
+                  <CrudAvatarUpload
+                    isLoading={isLoading}
+                    dataURL={currentUser?.imageUrl}
+                    onChange={(file) => {
+                      if (file) {
+                        uploadImage(file!.file!);
+                      }
+                    }}
+                  />
                 </div>
               </td>
             </tr>
@@ -33,7 +53,10 @@ const PersonalInfo = () => {
             </tr>
             <tr>
               <td className="py-2 text-gray-600 font-normal">Email</td>
-              <td className="py-2 text-gray-800 font-normaltext-sm">{currentUser?.email}</td>
+              <td className="py-2 text-gray-800 font-normaltext-sm">
+                {currentUser?.email} <br />
+                {currentUser?.imageUrl}
+              </td>
               <td className="py-2 text-center">
                 <Link to="/update" className="btn btn-sm btn-icon btn-clear btn-light">
                   <KeenIcon icon="notepad-edit" />

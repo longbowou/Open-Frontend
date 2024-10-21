@@ -5,7 +5,7 @@ import { createContext, type Dispatch, type PropsWithChildren, type SetStateActi
 
 import * as authHelper from '../_helpers';
 import { type UserModel } from '@/auth';
-import { genericErrorMessage } from '@/utils/API.ts';
+import { genericErrorMessage, uploadImageToS3 } from '@/utils/API.ts';
 
 const API_URL = import.meta.env.VITE_APP_API_URL;
 
@@ -30,8 +30,7 @@ interface AuthContextProps {
     email: string,
     address: string,
     password: string,
-    fileName: string,
-    contentType: string
+    file: File
   ) => Promise<any>;
   logout: () => void;
   verify: () => Promise<void>;
@@ -107,10 +106,12 @@ const AuthProvider = ({ children }: PropsWithChildren) => {
     email: string,
     address: string,
     password: string,
-    fileName: string,
-    contentType: string
+    file: File
   ) => {
     try {
+      const fileName = encodeURIComponent(file.name);
+      const contentType = file.type;
+
       const response = await axios.post(REGISTER_URL, {
         name,
         email,
@@ -119,6 +120,10 @@ const AuthProvider = ({ children }: PropsWithChildren) => {
         fileName,
         contentType
       });
+
+      if (response.data.errors && response.data.errors.length == 0) {
+        await uploadImageToS3(response.data.uploadURL, file);
+      }
 
       return response.data;
     } catch (error) {
