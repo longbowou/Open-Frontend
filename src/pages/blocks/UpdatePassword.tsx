@@ -1,10 +1,12 @@
 import { KeenIcon } from '@/components';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import clsx from 'clsx';
 import { useFormik } from 'formik';
 import { genericErrorMessage } from '@/utils/API.ts';
 import { useState } from 'react';
 import * as Yup from 'yup';
+import { ErrorMessage } from '@/auth/providers/JWTProvider.tsx';
+import { useUserContext } from '@/pages/useUserContext.ts';
 
 const initialValues = {
   currentPassword: '',
@@ -30,6 +32,8 @@ const signupSchema = Yup.object().shape({
 
 const UpdatePassword = () => {
   const [loading, setLoading] = useState(false);
+  const { updatePassword } = useUserContext();
+  const navigate = useNavigate();
 
   const [showCurrentPassword, setShowCurrentPassword] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
@@ -37,7 +41,7 @@ const UpdatePassword = () => {
 
   const toggleCurrentPassword = (event: { preventDefault: () => void }) => {
     event.preventDefault();
-    setShowCurrentPassword(!showPassword);
+    setShowCurrentPassword(!showCurrentPassword);
   };
 
   const togglePassword = (event: { preventDefault: () => void }) => {
@@ -56,39 +60,21 @@ const UpdatePassword = () => {
     onSubmit: async (values, { setStatus, setSubmitting, setFieldError }) => {
       setLoading(true);
       try {
-        // if (!register) {
-        //   throw new Error('JWTProvider is required for this form.');
-        // }
-        //
-        // const fileName = encodeURIComponent(image!.file!.name);
-        // const contentType = image!.file!.type;
-        //
-        // const response = await register(
-        //   values.name,
-        //   values.email,
-        //   values.address,
-        //   values.password,
-        //   values.passwordConfirmation,
-        //   fileName,
-        //   contentType
-        // );
-        //
-        // const errors: Array<ErrorMessage> = response.errors;
-        // if (errors && errors.length > 0) {
-        //   for (const error of errors) {
-        //     setFieldError(error.field, error.message);
-        //   }
-        //   setLoading(false);
-        // } else {
-        //   uploadImageToS3(response.uploadURL, image!.file!)
-        //     .then(() => {
-        //       navigate(from, { replace: true });
-        //     })
-        //     .catch(() => {
-        //       setFieldError('name', genericErrorMessage);
-        //       setLoading(false);
-        //     });
-        // }
+        if (!updatePassword) {
+          throw new Error('JWTProvider is required for this form.');
+        }
+
+        const response = await updatePassword(values.currentPassword!, values.password!);
+
+        const errors: Array<ErrorMessage> = response.errors;
+        if (errors && errors.length > 0) {
+          for (const error of errors) {
+            setFieldError(error.field, error.message);
+          }
+          setLoading(false);
+        } else {
+          navigate('/');
+        }
       } catch (error) {
         console.error(error);
         setStatus(genericErrorMessage);
