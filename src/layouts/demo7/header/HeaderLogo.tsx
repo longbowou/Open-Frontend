@@ -16,13 +16,13 @@ const HeaderLogo = () => {
       <div className="flex items-center gap-2.5">
         <Link to="/" className="shrink-0">
           <img
-            src={toAbsoluteUrl('/media/app/mini-logo-circle-primary.svg')}
-            className="dark:hidden min-h-[34px]"
+            src={toAbsoluteUrl('/media/app/logo.png')}
+            className="dark:hidden min-h-[34px] max-h-[50px]"
             alt="logo"
           />
           <img
-            src={toAbsoluteUrl('/media/app/mini-logo-circle-primary-dark.svg')}
-            className="hidden dark:inline-block min-h-[34px]"
+            src={toAbsoluteUrl('/media/app/logo-dark.png')}
+            className="hidden dark:inline-block min-h-[34px] max-h-[50px]"
             alt="logo"
           />
         </Link>
@@ -32,7 +32,6 @@ const HeaderLogo = () => {
         >
           <KeenIcon icon="burger-menu-2" />
         </button>
-        <h3 className="text-gray-900 text-lg font-medium hidden md:block">Open</h3>
       </div>
 
       <MegaMenu />

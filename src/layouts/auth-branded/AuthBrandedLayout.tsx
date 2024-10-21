@@ -27,23 +27,30 @@ const Layout = () => {
         </div>
 
         <div className="lg:rounded-xl lg:border lg:border-gray-200 lg:m-5 order-1 lg:order-2 bg-top xxl:bg-center xl:bg-cover bg-no-repeat branded-bg">
-          <div className="flex flex-col p-8 lg:p-16 gap-4">
+          <div className="flex flex-col p-8 lg:p-14 gap-4">
             <Link to="/">
               <img
-                src={toAbsoluteUrl('/media/app/mini-logo.svg')}
-                className="h-[28px] max-w-none"
+                src={toAbsoluteUrl('/media/app/logo.png')}
+                className="h-[100px] max-w-none"
                 alt=""
               />
             </Link>
 
             <div className="flex flex-col gap-3">
-              <h3 className="text-2xl font-semibold text-gray-900">Secure Access Portal</h3>
               <div className="text-base font-medium text-gray-600">
-                A robust authentication gateway ensuring
-                <br /> secure&nbsp;
-                <span className="text-gray-900 font-semibold">efficient user access</span>
-                &nbsp;to the Metronic
-                <br /> Dashboard interface.
+                A sleek, <span className="text-gray-900 font-semibold">serverless</span> app
+                offering seamless login, <br />
+                registration, and profile updates with image uploads. <br />
+                Powered by{' '}
+                <span className="text-gray-900 font-semibold">AWS API GateWay, Lambda, and S3</span>
+                ,
+                <br />
+                it provides a modern, scalable solution
+                <br />
+                with zero server maintenance.
+                <br />
+                Perfect for <span className="text-gray-900 font-semibold">rapid</span> and{' '}
+                <span className="text-gray-900 font-semibold">secure</span> user management.
               </div>
             </div>
           </div>
