@@ -54,10 +54,7 @@ const PersonalInfo = () => {
             </tr>
             <tr>
               <td className="py-2 text-gray-600 font-normal">Email</td>
-              <td className="py-2 text-gray-800 font-normaltext-sm">
-                {currentUser?.email} <br />
-                {currentUser?.imageUrl}
-              </td>
+              <td className="py-2 text-gray-800 font-normaltext-sm">{currentUser?.email}</td>
               <td className="py-2 text-center">
                 <Link to="/update" className="btn btn-sm btn-icon btn-clear btn-light">
                   <KeenIcon icon="notepad-edit" />
