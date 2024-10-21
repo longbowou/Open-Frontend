@@ -69,7 +69,6 @@ const Signup = () => {
           values.email,
           values.address,
           values.password,
-          values.passwordConfirmation,
           fileName,
           contentType
         );

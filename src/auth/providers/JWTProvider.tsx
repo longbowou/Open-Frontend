@@ -30,7 +30,6 @@ interface AuthContextProps {
     email: string,
     address: string,
     password: string,
-    passwordConfirmation: string,
     fileName: string,
     contentType: string
   ) => Promise<any>;
@@ -108,7 +107,6 @@ const AuthProvider = ({ children }: PropsWithChildren) => {
     email: string,
     address: string,
     password: string,
-    passwordConfirmation: string,
     fileName: string,
     contentType: string
   ) => {
@@ -118,7 +116,6 @@ const AuthProvider = ({ children }: PropsWithChildren) => {
         email,
         address,
         password,
-        passwordConfirmation,
         fileName,
         contentType
       });
