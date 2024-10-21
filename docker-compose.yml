@@ -1,28 +1,8 @@
 services:
   app:
     build: .
-    env_file: .env
     volumes:
       - ./:/app
-    restart: "no"
-
-  nginx:
-    image: nginx:stable-alpine
-    expose:
-      - 80
-    volumes:
-      - ./nginx:/etc/nginx/conf.d
-      - ./:/app
-    labels:
-      - traefik.enable=true
-      - traefik.http.routers.moonwalk-frontend.rule=Host(`moonwalk.huura.tg`)
-      - traefik.http.routers.moonwalk-frontend.tls=true
-      - traefik.http.routers.moonwalk-frontend.tls.certresolver=le
-    networks:
-      - traefik-proxy
-    restart: unless-stopped
-
-networks:
-  default:
-  traefik-proxy:
-    external: true
+    command: pnpm run dev
+    ports:
+      - "3000:3000"

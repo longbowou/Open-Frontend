@@ -12,7 +12,6 @@ const API_URL = import.meta.env.VITE_APP_API_URL;
 export const FETCH_USER_URL = `${API_URL}/fetch-user`;
 export const LOGIN_URL = `${API_URL}/login`;
 export const REGISTER_URL = `${API_URL}/register`;
-export const REQUEST_PASSWORD_URL = `${API_URL}/forgot-password`;
 
 export interface ErrorMessage {
   field: string;
@@ -35,7 +34,6 @@ interface AuthContextProps {
     fileName: string,
     contentType: string
   ) => Promise<any>;
-  requestPassword: (email: string) => Promise<void>;
   logout: () => void;
   verify: () => Promise<void>;
 }
@@ -46,7 +44,6 @@ const AuthProvider = ({ children }: PropsWithChildren) => {
   const [loading, setLoading] = useState(true);
   const [auth, setAuth] = useState<string | undefined>(authHelper.getAuth());
   const [currentUser, setCurrentUser] = useState<UserModel | undefined>();
-  const [errors, setErrors] = useState<Array<ErrorMessage>>([]);
 
   useEffect(() => {
     verify().finally(() => {
@@ -140,13 +137,6 @@ const AuthProvider = ({ children }: PropsWithChildren) => {
     }
   };
 
-  // Server should return object => { result: boolean } (Is Email in DB)
-  const requestPassword = async (email: string) => {
-    await axios.post<{ result: boolean }>(REQUEST_PASSWORD_URL, {
-      email
-    });
-  };
-
   // Returns user by using bearer authentication token
   const fetchUser = async () => {
     return await axios.get(FETCH_USER_URL);
@@ -168,7 +158,6 @@ const AuthProvider = ({ children }: PropsWithChildren) => {
         setCurrentUser,
         login,
         register,
-        requestPassword,
         logout,
         verify
       }}

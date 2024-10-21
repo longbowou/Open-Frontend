@@ -1,11 +1,13 @@
 import { KeenIcon } from '@/components';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import clsx from 'clsx';
 import { useFormik } from 'formik';
 import { genericErrorMessage } from '@/utils/API.ts';
 import { useState } from 'react';
 import * as Yup from 'yup';
 import { useAuthContext } from '@/auth';
+import { useUserContext } from '@/pages/useUserContext.ts';
+import { ErrorMessage } from '@/auth/providers/JWTProvider.tsx';
 
 const signupSchema = Yup.object().shape({
   name: Yup.string().required('Name is required'),
@@ -20,6 +22,8 @@ const signupSchema = Yup.object().shape({
 const UpdatePersonalInfo = () => {
   const [loading, setLoading] = useState(false);
   const { currentUser } = useAuthContext();
+  const { updateProfile } = useUserContext();
+  const navigate = useNavigate();
 
   const initialValues = {
     name: currentUser?.name,
@@ -33,39 +37,21 @@ const UpdatePersonalInfo = () => {
     onSubmit: async (values, { setStatus, setSubmitting, setFieldError }) => {
       setLoading(true);
       try {
-        // if (!register) {
-        //   throw new Error('JWTProvider is required for this form.');
-        // }
-        //
-        // const fileName = encodeURIComponent(image!.file!.name);
-        // const contentType = image!.file!.type;
-        //
-        // const response = await register(
-        //   values.name,
-        //   values.email,
-        //   values.address,
-        //   values.password,
-        //   values.passwordConfirmation,
-        //   fileName,
-        //   contentType
-        // );
-        //
-        // const errors: Array<ErrorMessage> = response.errors;
-        // if (errors && errors.length > 0) {
-        //   for (const error of errors) {
-        //     setFieldError(error.field, error.message);
-        //   }
-        //   setLoading(false);
-        // } else {
-        //   uploadImageToS3(response.uploadURL, image!.file!)
-        //     .then(() => {
-        //       navigate(from, { replace: true });
-        //     })
-        //     .catch(() => {
-        //       setFieldError('name', genericErrorMessage);
-        //       setLoading(false);
-        //     });
-        // }
+        if (!updateProfile) {
+          throw new Error('UserProvider is required for this form.');
+        }
+
+        const response = await updateProfile(values.name!, values.email!, values.address!);
+
+        const errors: Array<ErrorMessage> = response.errors;
+        if (errors && errors.length > 0) {
+          for (const error of errors) {
+            setFieldError(error.field, error.message);
+          }
+          setLoading(false);
+        } else {
+          navigate('/');
+        }
       } catch (error) {
         console.error(error);
         setStatus(genericErrorMessage);
