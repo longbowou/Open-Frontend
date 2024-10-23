@@ -1,7 +1,8 @@
 # Open
 
 A sleek, serverless app offering seamless login, registration, and profile updates with image uploads. Powered by AWS
-Lambda, Cognito, and S3, it provides a modern, scalable solution with zero server maintenance—perfect for rapid, secure
+Api Gateway, AWS Lambda, S3, DynamoDB, and CloudFront, it provides a modern, scalable solution with zero server
+maintenance—perfect for rapid, secure
 user management.
 
 ## Description
@@ -110,13 +111,13 @@ yet powerful.
 
 Here you can find each lambda function written in node.js on it on repository with more detail. Check them out:
 
-### [Login](https://github.com/longbowou/open-authorizer)
+### [Login](https://github.com/longbowou/open-login)
 
 This Lambda function facilitates secure user authentication by validating credentials against stored user data in
 DynamoDB and generating a JWT (JSON Web Token) for authenticated users. It integrates password hashing with bcrypt for
 enhanced security, ensuring that users’ credentials are safely processed.
 
-### [Register](https://github.com/longbowou/open-fetch-user)
+### [Register](https://github.com/longbowou/open-register)
 
 This Lambda function enables secure user registration by integrating DynamoDB for storing user details and S3 for
 handling profile image uploads. It ensures that all user data, including passwords, is stored securely, while providing
