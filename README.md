@@ -21,38 +21,6 @@ Checkout the [CloudFormation Repository](https://github.com/longbowou/open-cloud
 serverless backend and frontend easier with AWS
 CloudFormation. In just a few simple steps, you’ll set up a fully scalable infrastructure.
 
-## Key Features
-
-### Effortless User Management
-
-Say goodbye to traditional login headaches! This app provides frictionless user authentication and registration,
-ensuring a smooth onboarding process for new users while maintaining robust security protocols.
-
-### Profile Customization with Image Uploads
-
-Empower users to express themselves with personalized profiles! Seamlessly update user details and profile pictures
-with real-time image uploads—ensuring that everyone’s online persona is unique and fresh.
-
-### Serverless Scalability
-
-Built to grow with your users, this app leverages the power of AWS Lambda and DynamoDB, dynamically scaling to handle
-millions of requests without breaking a sweat or requiring server maintenance.
-
-### Blazing Fast Content Delivery
-
-With AWS S3 and CloudFront integration, static content like HTML, CSS, and JavaScript is delivered at lightning speed,
-offering an immersive, lag-free experience, no matter where your users are in the world.
-
-### Secure API Gateway
-
-All communication between the app and backend services is funneled through AWS API Gateway, ensuring top-notch
-security, scalability, and easy maintenance—giving your app the muscle to handle increasing user demand.
-
-### Zero Downtime and High Availability
-
-Thanks to serverless architecture, the app ensures high availability and zero downtime, meaning users can interact
-with the app anytime without interruptions.
-
 ## App Architecture
 
 ### Frontend built with React, TypeScript, and Tailwind CSS
@@ -108,6 +76,33 @@ yet powerful.
   AWS API Gateway acts as the bridge between the frontend and backend. Every request to the backend, whether it’s
   logging in, updating profiles, or fetching user data, is routed through API Gateway, ensuring reliable, scalable, and
   secure communication.
+
+## Key Features
+
+### Profile Customization with Image Uploads
+
+Empower users to express themselves with personalized profiles! Seamlessly update user details and profile pictures
+with real-time image uploads—ensuring that everyone’s online persona is unique and fresh.
+
+### Serverless Scalability
+
+Built to grow with your users, this app leverages the power of AWS Lambda and DynamoDB, dynamically scaling to handle
+millions of requests without breaking a sweat or requiring server maintenance.
+
+### Blazing Fast Content Delivery
+
+With AWS S3 and CloudFront integration, static content like HTML, CSS, and JavaScript is delivered at lightning speed,
+offering an immersive, lag-free experience, no matter where your users are in the world.
+
+### Secure API Gateway
+
+All communication between the app and backend services is funneled through AWS API Gateway, ensuring top-notch
+security, scalability, and easy maintenance—giving your app the muscle to handle increasing user demand.
+
+### Zero Downtime and High Availability
+
+Thanks to serverless architecture, the app ensures high availability and zero downtime, meaning users can interact
+with the app anytime without interruptions.
 
 ## AWS Services
 
