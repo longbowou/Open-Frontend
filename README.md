@@ -224,6 +224,7 @@ upload their profile pictures, delivering modern and interactive functionality f
 ![Screenshot 2024-10-22 at 10.04.03 PM.png](screenshots/apigateway/Screenshot%202024-10-22%20at%2010.04.03%E2%80%AFPM.png)
 ![Screenshot 2024-10-22 at 10.04.10 PM.png](screenshots/apigateway/Screenshot%202024-10-22%20at%2010.04.10%E2%80%AFPM.png)
 ![Screenshot 2024-10-22 at 10.04.17 PM.png](screenshots/apigateway/Screenshot%202024-10-22%20at%2010.04.17%E2%80%AFPM.png)
+![Screenshot 2024-10-23 at 1.33.48 PM.png](screenshots/apigateway/Screenshot%202024-10-23%20at%201.33.48%E2%80%AFPM.png)
 ![Screenshot 2024-10-22 at 10.04.39 PM.png](screenshots/apigateway/Screenshot%202024-10-22%20at%2010.04.39%E2%80%AFPM.png)
 ![Screenshot 2024-10-22 at 10.04.47 PM.png](screenshots/apigateway/Screenshot%202024-10-22%20at%2010.04.47%E2%80%AFPM.png)
 ![Screenshot 2024-10-22 at 10.05.00 PM.png](screenshots/apigateway/Screenshot%202024-10-22%20at%2010.05.00%E2%80%AFPM.png)
