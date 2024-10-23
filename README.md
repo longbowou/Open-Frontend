@@ -20,34 +20,34 @@ In this serverless application, AWS infrastructure components come together to c
 user authentication, profile management, and media uploads, all while minimizing server management overhead. Here’s how
 the key resources contribute to this seamless experience:
 
-### 1. API Gateway:
+### API Gateway:
 
 API Gateway acts as the heart of the app’s communication. It serves as a scalable entry point, routing requests like
 user login, registration, and profile updates to the appropriate Lambda functions. API Gateway offers the app a
 powerful, secure, and easily manageable interface for handling HTTP requests without the need for complex backend
 servers.
 
-### 2. AWS Lambda:
+### AWS Lambda:
 
 Lambda is the brains behind each operation. The serverless architecture leverages Lambda to process login credentials,
 manage user data, and handle image uploads. Functions are written in Node.js, executing on demand when triggered by API
 Gateway. This eliminates the need for dedicated servers and ensures the app can scale effortlessly, processing user
 requests in milliseconds.
 
-### 3. S3 (Simple Storage Service):
+### S3 (Simple Storage Service):
 
 S3 serves dual purposes in this app. The FrontendBucket hosts static frontend files, delivering them globally to users
 with blazing speed, while the MediaBucket manages image uploads for user profiles. With its built-in redundancy and CORS
 configuration, S3 ensures safe and efficient storage for user media, while making file access straightforward.
 
-### 4. DynamoDB:
+### DynamoDB:
 
 DynamoDB serves as the app’s database, providing high-performance, low-latency storage for user information. Every
 registered user has an entry in DynamoDB, with operations such as creating, reading, updating, and deleting profiles
 handled smoothly. The database’s scalability matches the dynamic growth of the app, ensuring optimal performance
 regardless of the user load.
 
-### 5. CloudFront:
+### CloudFront:
 
 CloudFront, a global Content Delivery Network (CDN), accelerates content delivery by caching frontend files closer to
 users. This results in faster load times and ensures a seamless experience, even under heavy traffic. Additionally,
@@ -165,6 +165,7 @@ upload their profile pictures, delivering modern and interactive functionality f
 ### Frontend App
 
 ![Screenshot 2024-10-22 at 9.45.49 PM.png](screenshots/frontend/Screenshot%202024-10-22%20at%209.45.49%E2%80%AFPM.png)
+![Screenshot 2024-10-23 at 12.30.28 AM.png](screenshots/frontend/Screenshot%202024-10-23%20at%2012.30.28%E2%80%AFAM.png)
 ![Screenshot 2024-10-22 at 9.46.23 PM.png](screenshots/frontend/Screenshot%202024-10-22%20at%209.46.23%E2%80%AFPM.png)
 ![Screenshot 2024-10-22 at 9.46.31 PM.png](screenshots/frontend/Screenshot%202024-10-22%20at%209.46.31%E2%80%AFPM.png)
 ![Screenshot 2024-10-22 at 9.46.38 PM.png](screenshots/frontend/Screenshot%202024-10-22%20at%209.46.38%E2%80%AFPM.png)
@@ -200,6 +201,17 @@ upload their profile pictures, delivering modern and interactive functionality f
 ![Screenshot 2024-10-22 at 10.04.47 PM.png](screenshots/apigateway/Screenshot%202024-10-22%20at%2010.04.47%E2%80%AFPM.png)
 ![Screenshot 2024-10-22 at 10.05.00 PM.png](screenshots/apigateway/Screenshot%202024-10-22%20at%2010.05.00%E2%80%AFPM.png)
 
+### Lambda
+
+![Screenshot 2024-10-22 at 9.47.58 PM.png](screenshots/lambda/Screenshot%202024-10-22%20at%209.47.58%E2%80%AFPM.png)
+![Screenshot 2024-10-22 at 9.48.20 PM.png](screenshots/lambda/Screenshot%202024-10-22%20at%209.48.20%E2%80%AFPM.png)
+![Screenshot 2024-10-22 at 9.48.34 PM.png](screenshots/lambda/Screenshot%202024-10-22%20at%209.48.34%E2%80%AFPM.png)
+![Screenshot 2024-10-22 at 9.48.43 PM.png](screenshots/lambda/Screenshot%202024-10-22%20at%209.48.43%E2%80%AFPM.png)
+![Screenshot 2024-10-22 at 9.49.03 PM.png](screenshots/lambda/Screenshot%202024-10-22%20at%209.49.03%E2%80%AFPM.png)
+![Screenshot 2024-10-22 at 9.49.16 PM.png](screenshots/lambda/Screenshot%202024-10-22%20at%209.49.16%E2%80%AFPM.png)
+![Screenshot 2024-10-22 at 9.49.33 PM.png](screenshots/lambda/Screenshot%202024-10-22%20at%209.49.33%E2%80%AFPM.png)
+![Screenshot 2024-10-22 at 9.49.58 PM.png](screenshots/lambda/Screenshot%202024-10-22%20at%209.49.58%E2%80%AFPM.png)
+
 ### DynamoDB
 
 ![Screenshot 2024-10-22 at 9.55.33 PM.png](screenshots/dynamodb/Screenshot%202024-10-22%20at%209.55.33%E2%80%AFPM.png)
@@ -212,12 +224,6 @@ upload their profile pictures, delivering modern and interactive functionality f
 ![Screenshot 2024-10-22 at 9.57.33 PM.png](screenshots/s3/Screenshot%202024-10-22%20at%209.57.33%E2%80%AFPM.png)
 ![Screenshot 2024-10-22 at 10.16.45 PM.png](screenshots/s3/Screenshot%202024-10-22%20at%2010.16.45%E2%80%AFPM.png)
 ![Screenshot 2024-10-22 at 9.57.48 PM.png](screenshots/s3/Screenshot%202024-10-22%20at%209.57.48%E2%80%AFPM.png)
-
-### CI/CD
-
-![Screenshot 2024-10-22 at 10.06.45 PM.png](screenshots/cicd/Screenshot%202024-10-22%20at%2010.06.45%E2%80%AFPM.png)
-![Screenshot 2024-10-22 at 10.07.03 PM.png](screenshots/cicd/Screenshot%202024-10-22%20at%2010.07.03%E2%80%AFPM.png)
-![Screenshot 2024-10-22 at 10.07.53 PM.png](screenshots/cicd/Screenshot%202024-10-22%20at%2010.07.53%E2%80%AFPM.png)
 
 ## Quick Setup
 
