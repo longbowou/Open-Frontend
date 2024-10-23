@@ -150,7 +150,7 @@ CloudFront provides enhanced security with HTTPS, protecting user interactions.
 
 ## Lambda Functions
 
-Here you can find each lambda function written in node.js on it on repository with more detail. Check them out:
+Here you can find each lambda function written in node.js on it own repository with more detail. Check them out:
 
 ### [Login](https://github.com/longbowou/open-login)
 
