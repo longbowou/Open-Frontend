@@ -4,11 +4,12 @@ A sleek, serverless app offering seamless login, registration, and profile updat
 Api Gateway, AWS Lambda, S3, DynamoDB, and CloudFront, it provides a modern, scalable solution with zero server
 maintenance—perfect for rapid, secure
 user management.
+
 ![Screenshot 2024-10-22 at 9.43.18 PM.png](screenshots/cloudformation/Screenshot%202024-10-22%20at%209.43.18%E2%80%AFPM.png)
 
 ## Online Demo
 
-[https://dgzyzdn6ci4rp.cloudfront.net](https://dgzyzdn6ci4rp.cloudfront.net)
+<a href="https://dgzyzdn6ci4rp.cloudfront.net" target="_blank">https://dgzyzdn6ci4rp.cloudfront.net</a>
 
 ![Screenshot 2024-10-22 at 9.46.59 PM.png](screenshots/frontend/Screenshot%202024-10-22%20at%209.46.59%E2%80%AFPM.png)
 Checkout more [screenshots](#screenshots) down.
