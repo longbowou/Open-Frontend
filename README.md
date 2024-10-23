@@ -4,6 +4,14 @@ A sleek, serverless app offering seamless login, registration, and profile updat
 Api Gateway, AWS Lambda, S3, DynamoDB, and CloudFront, it provides a modern, scalable solution with zero server
 maintenance—perfect for rapid, secure
 user management.
+![Screenshot 2024-10-22 at 9.43.18 PM.png](screenshots/cloudformation/Screenshot%202024-10-22%20at%209.43.18%E2%80%AFPM.png)
+
+## Online Demo
+
+[https://dgzyzdn6ci4rp.cloudfront.net](https://dgzyzdn6ci4rp.cloudfront.net)
+
+![Screenshot 2024-10-22 at 9.46.59 PM.png](screenshots/frontend/Screenshot%202024-10-22%20at%209.46.59%E2%80%AFPM.png)
+Checkout more [screenshots](#screenshots) down.
 
 ## Description
 
@@ -150,6 +158,65 @@ user data and bcrypt for secure password hashing and validation.
 This Lambda function provides a seamless image upload experience, handling both the secure storage
 of images in Amazon S3 and updating user profile information in DynamoDB. It’s designed to allow users to easily
 upload their profile pictures, delivering modern and interactive functionality for any application.
+
+## Screenshots
+
+### Frontend App
+
+![Screenshot 2024-10-22 at 9.45.49 PM.png](screenshots/frontend/Screenshot%202024-10-22%20at%209.45.49%E2%80%AFPM.png)
+![Screenshot 2024-10-22 at 9.46.23 PM.png](screenshots/frontend/Screenshot%202024-10-22%20at%209.46.23%E2%80%AFPM.png)
+![Screenshot 2024-10-22 at 9.46.31 PM.png](screenshots/frontend/Screenshot%202024-10-22%20at%209.46.31%E2%80%AFPM.png)
+![Screenshot 2024-10-22 at 9.46.38 PM.png](screenshots/frontend/Screenshot%202024-10-22%20at%209.46.38%E2%80%AFPM.png)
+![Screenshot 2024-10-22 at 9.46.52 PM.png](screenshots/frontend/Screenshot%202024-10-22%20at%209.46.52%E2%80%AFPM.png)
+![Screenshot 2024-10-22 at 9.46.59 PM.png](screenshots/frontend/Screenshot%202024-10-22%20at%209.46.59%E2%80%AFPM.png)
+
+## Cloud Formation
+
+![Screenshot 2024-10-22 at 9.43.18 PM.png](screenshots/cloudformation/Screenshot%202024-10-22%20at%209.43.18%E2%80%AFPM.png)
+![Screenshot 2024-10-22 at 9.41.29 PM.png](screenshots/cloudformation/Screenshot%202024-10-22%20at%209.41.29%E2%80%AFPM.png)
+![Screenshot 2024-10-22 at 9.41.38 PM.png](screenshots/cloudformation/Screenshot%202024-10-22%20at%209.41.38%E2%80%AFPM.png)
+![Screenshot 2024-10-22 at 9.41.45 PM.png](screenshots/cloudformation/Screenshot%202024-10-22%20at%209.41.45%E2%80%AFPM.png)
+![Screenshot 2024-10-22 at 9.41.55 PM.png](screenshots/cloudformation/Screenshot%202024-10-22%20at%209.41.55%E2%80%AFPM.png)
+
+### Codebuild
+
+![Screenshot 2024-10-22 at 10.00.04 PM.png](screenshots/codebuild/Screenshot%202024-10-22%20at%2010.00.04%E2%80%AFPM.png)
+![Screenshot 2024-10-22 at 10.00.13 PM.png](screenshots/codebuild/Screenshot%202024-10-22%20at%2010.00.13%E2%80%AFPM.png)
+![Screenshot 2024-10-22 at 10.00.21 PM.png](screenshots/codebuild/Screenshot%202024-10-22%20at%2010.00.21%E2%80%AFPM.png)
+![Screenshot 2024-10-22 at 10.01.36 PM.png](screenshots/codebuild/Screenshot%202024-10-22%20at%2010.01.36%E2%80%AFPM.png)
+![Screenshot 2024-10-22 at 10.00.59 PM.png](screenshots/codebuild/Screenshot%202024-10-22%20at%2010.00.59%E2%80%AFPM.png)
+![Screenshot 2024-10-22 at 10.01.06 PM.png](screenshots/codebuild/Screenshot%202024-10-22%20at%2010.01.06%E2%80%AFPM.png)
+![Screenshot 2024-10-22 at 10.01.56 PM.png](screenshots/codebuild/Screenshot%202024-10-22%20at%2010.01.56%E2%80%AFPM.png)
+
+### API Gateway
+
+![Screenshot 2024-10-22 at 10.03.26 PM.png](screenshots/apigateway/Screenshot%202024-10-22%20at%2010.03.26%E2%80%AFPM.png)
+![Screenshot 2024-10-22 at 10.03.33 PM.png](screenshots/apigateway/Screenshot%202024-10-22%20at%2010.03.33%E2%80%AFPM.png)
+![Screenshot 2024-10-22 at 10.04.03 PM.png](screenshots/apigateway/Screenshot%202024-10-22%20at%2010.04.03%E2%80%AFPM.png)
+![Screenshot 2024-10-22 at 10.04.10 PM.png](screenshots/apigateway/Screenshot%202024-10-22%20at%2010.04.10%E2%80%AFPM.png)
+![Screenshot 2024-10-22 at 10.04.17 PM.png](screenshots/apigateway/Screenshot%202024-10-22%20at%2010.04.17%E2%80%AFPM.png)
+![Screenshot 2024-10-22 at 10.04.39 PM.png](screenshots/apigateway/Screenshot%202024-10-22%20at%2010.04.39%E2%80%AFPM.png)
+![Screenshot 2024-10-22 at 10.04.47 PM.png](screenshots/apigateway/Screenshot%202024-10-22%20at%2010.04.47%E2%80%AFPM.png)
+![Screenshot 2024-10-22 at 10.05.00 PM.png](screenshots/apigateway/Screenshot%202024-10-22%20at%2010.05.00%E2%80%AFPM.png)
+
+### DynamoDB
+
+![Screenshot 2024-10-22 at 9.55.33 PM.png](screenshots/dynamodb/Screenshot%202024-10-22%20at%209.55.33%E2%80%AFPM.png)
+![Screenshot 2024-10-22 at 9.56.12 PM.png](screenshots/dynamodb/Screenshot%202024-10-22%20at%209.56.12%E2%80%AFPM.png)
+![Screenshot 2024-10-22 at 9.56.21 PM.png](screenshots/dynamodb/Screenshot%202024-10-22%20at%209.56.21%E2%80%AFPM.png)
+
+### S3
+
+![Screenshot 2024-10-22 at 9.57.25 PM.png](screenshots/s3/Screenshot%202024-10-22%20at%209.57.25%E2%80%AFPM.png)
+![Screenshot 2024-10-22 at 9.57.33 PM.png](screenshots/s3/Screenshot%202024-10-22%20at%209.57.33%E2%80%AFPM.png)
+![Screenshot 2024-10-22 at 10.16.45 PM.png](screenshots/s3/Screenshot%202024-10-22%20at%2010.16.45%E2%80%AFPM.png)
+![Screenshot 2024-10-22 at 9.57.48 PM.png](screenshots/s3/Screenshot%202024-10-22%20at%209.57.48%E2%80%AFPM.png)
+
+### CI/CD
+
+![Screenshot 2024-10-22 at 10.06.45 PM.png](screenshots/cicd/Screenshot%202024-10-22%20at%2010.06.45%E2%80%AFPM.png)
+![Screenshot 2024-10-22 at 10.07.03 PM.png](screenshots/cicd/Screenshot%202024-10-22%20at%2010.07.03%E2%80%AFPM.png)
+![Screenshot 2024-10-22 at 10.07.53 PM.png](screenshots/cicd/Screenshot%202024-10-22%20at%2010.07.53%E2%80%AFPM.png)
 
 ## Quick Setup
 
