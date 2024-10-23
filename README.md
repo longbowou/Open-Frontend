@@ -257,26 +257,52 @@ upload their profile pictures, delivering modern and interactive functionality f
 ![Screenshot 2024-10-22 at 10.16.45 PM.png](screenshots/s3/Screenshot%202024-10-22%20at%2010.16.45%E2%80%AFPM.png)
 ![Screenshot 2024-10-22 at 9.57.48 PM.png](screenshots/s3/Screenshot%202024-10-22%20at%209.57.48%E2%80%AFPM.png)
 
-## Quick Setup
+## Requirements
 
-```sh
-npm install
+- [Docker](https://docs.docker.com/install)
+
+## Setup
+
+- Clone the repository
+
+```bash
+git clone git@github.com:longbowou/open-frontend.git
 ```
 
-### Compile and Hot-Reload for Development
+- Build the application
 
-```sh
-npm run dev
+```bash
+docker compose build
 ```
 
-### Type-Check, Compile and Minify for Production
+- Update environments variable
 
-```sh
-npm run build
+```bash
+cp .env.example .env
 ```
 
-### Lint with [ESLint](https://eslint.org/)
+- install dependencies
 
-```sh
-npm run lint
+```bash
+docker compose run --rm app pnpm i
 ```
+
+- compiles and minifies for production
+
+```bash
+docker compose run --rm app pnpm run build
+```
+
+### Run
+
+```bash
+docker compose up -d
+```
+
+## Where is the application running?
+
+- App Frontend - [http://localhost:3000](http://localhost:3000)
+
+## License
+
+This project is licensed under the [MIT License](LICENSE).
