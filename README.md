@@ -1,9 +1,10 @@
 # Open
 
-A sleek, serverless app offering seamless login, registration, and profile updates with image uploads. Powered by AWS
-Api Gateway, AWS Lambda, S3, DynamoDB, and CloudFront, it provides a modern, scalable solution with zero server
-maintenance—perfect for rapid, secure
-user management.
+A cutting-edge app built with React, TypeScript, and Tailwind CSS, offering a smooth and intuitive user experience for
+login, registration, profile updates, and image uploads. The app leverages API Gateway to route requests, AWS Lambda for
+serverless backend logic, DynamoDB for fast and scalable data storage, and S3 for secure image hosting. CloudFront
+accelerates content delivery, ensuring rapid load times and global reach. Seamlessly blending a sleek frontend with
+powerful serverless technologies, this app is designed for performance, scalability, and a beautiful user experience.
 
 ![Screenshot 2024-10-22 at 9.43.18 PM.png](screenshots/cloudformation/Screenshot%202024-10-22%20at%209.43.18%E2%80%AFPM.png)
 
@@ -11,47 +12,14 @@ user management.
 
 <a href="https://dgzyzdn6ci4rp.cloudfront.net" target="_blank">https://dgzyzdn6ci4rp.cloudfront.net</a>
 
-![Screenshot 2024-10-22 at 9.46.59 PM.png](screenshots/frontend/Screenshot%202024-10-22%20at%209.46.59%E2%80%AFPM.png)
+![Screenshot 2024-10-22 at 9.46.31 PM.png](screenshots/frontend/Screenshot%202024-10-22%20at%209.46.31%E2%80%AFPM.png)
 Checkout more [screenshots](#screenshots) down.
 
-## Description
+## Effortless Serverless Deployment with CloudFormation
 
-In this serverless application, AWS infrastructure components come together to create a modern, scalable platform for
-user authentication, profile management, and media uploads, all while minimizing server management overhead. Here’s how
-the key resources contribute to this seamless experience:
-
-### API Gateway:
-
-API Gateway acts as the heart of the app’s communication. It serves as a scalable entry point, routing requests like
-user login, registration, and profile updates to the appropriate Lambda functions. API Gateway offers the app a
-powerful, secure, and easily manageable interface for handling HTTP requests without the need for complex backend
-servers.
-
-### AWS Lambda:
-
-Lambda is the brains behind each operation. The serverless architecture leverages Lambda to process login credentials,
-manage user data, and handle image uploads. Functions are written in Node.js, executing on demand when triggered by API
-Gateway. This eliminates the need for dedicated servers and ensures the app can scale effortlessly, processing user
-requests in milliseconds.
-
-### S3 (Simple Storage Service):
-
-S3 serves dual purposes in this app. The FrontendBucket hosts static frontend files, delivering them globally to users
-with blazing speed, while the MediaBucket manages image uploads for user profiles. With its built-in redundancy and CORS
-configuration, S3 ensures safe and efficient storage for user media, while making file access straightforward.
-
-### DynamoDB:
-
-DynamoDB serves as the app’s database, providing high-performance, low-latency storage for user information. Every
-registered user has an entry in DynamoDB, with operations such as creating, reading, updating, and deleting profiles
-handled smoothly. The database’s scalability matches the dynamic growth of the app, ensuring optimal performance
-regardless of the user load.
-
-### CloudFront:
-
-CloudFront, a global Content Delivery Network (CDN), accelerates content delivery by caching frontend files closer to
-users. This results in faster load times and ensures a seamless experience, even under heavy traffic. Additionally,
-CloudFront provides enhanced security with HTTPS, protecting user interactions.
+Checkout the [CloudFormation Repository](https://github.com/longbowou/open-cloudformation) to deploy this app’s
+serverless backend and frontend easier with AWS
+CloudFormation. In just a few simple steps, you’ll set up a fully scalable infrastructure.
 
 ## Key Features
 
@@ -87,13 +55,38 @@ with the app anytime without interruptions.
 
 ## App Architecture
 
-### Frontend
+### Frontend built with React, TypeScript, and Tailwind CSS
 
-The app’s frontend is hosted on Amazon S3, offering a highly scalable, static website hosting solution that serves as
-the app’s face. Integrated with Amazon CloudFront, a global content delivery network (CDN), the frontend is distributed
-worldwide, offering users lightning-fast load times no matter their location. Modern web technologies like HTML, CSS,
-and JavaScript (possibly enhanced with frameworks like React or Vue.js) ensure that users enjoy a sleek, responsive
-design across devices.
+The app’s frontend, hosted on Amazon S3, is crafted with a modern tech stack consisting of React, TypeScript, and
+Tailwind CSS to provide an intuitive and dynamic user experience. Here’s how these technologies enhance the app:
+
+- **React**:
+  React powers the app’s component-based architecture, allowing for a fast, interactive UI. With state management and
+  hooks, the app delivers seamless user interactions and real-time data rendering, creating a highly responsive
+  interface.
+
+- **TypeScript**:
+  By integrating TypeScript, the app gains type safety and developer-friendly features, ensuring fewer bugs, better code
+  quality, and easier maintenance. TypeScript provides a robust development experience by catching errors early during
+  the development phase, making the app more reliable and scalable.
+
+- **Tailwind CSS**:
+  Tailwind CSS provides a utility-first approach to styling, allowing for rapid UI development with minimal custom CSS.
+  The design is responsive, consistent, and highly customizable, resulting in a modern, sleek interface that adapts
+  beautifully to any screen size or device.
+
+#### Blazing-Fast Performance with CloudFront
+
+Combined with Amazon CloudFront for global content distribution, the frontend is delivered to users with lightning
+speed, reducing latency and ensuring an optimized user experience—whether users are accessing the app from mobile
+devices or desktops.
+
+#### Why This Frontend Stack is Powerful
+
+Together, React, TypeScript, and Tailwind CSS offer a robust, scalable, and visually appealing solution. This stack
+ensures that the app not only performs efficiently but also provides a smooth, modern user experience that can scale as
+user demand grows. Whether it’s handling dynamic updates, improving developer productivity, or offering a clean and
+responsive UI, this combination delivers on all fronts.
 
 ### Serverless Backend with AWS Lambda
 
@@ -115,6 +108,45 @@ yet powerful.
   AWS API Gateway acts as the bridge between the frontend and backend. Every request to the backend, whether it’s
   logging in, updating profiles, or fetching user data, is routed through API Gateway, ensuring reliable, scalable, and
   secure communication.
+
+## AWS Services
+
+In this serverless application, AWS infrastructure components come together to create a modern, scalable platform for
+user authentication, profile management, and media uploads, all while minimizing server management overhead. Here’s how
+the key resources contribute to this seamless experience:
+
+### API Gateway
+
+API Gateway acts as the heart of the app’s communication. It serves as a scalable entry point, routing requests like
+user login, registration, and profile updates to the appropriate Lambda functions. API Gateway offers the app a
+powerful, secure, and easily manageable interface for handling HTTP requests without the need for complex backend
+servers.
+
+### AWS Lambda
+
+Lambda is the brains behind each operation. The serverless architecture leverages Lambda to process login credentials,
+manage user data, and handle image uploads. Functions are written in Node.js, executing on demand when triggered by API
+Gateway. This eliminates the need for dedicated servers and ensures the app can scale effortlessly, processing user
+requests in milliseconds.
+
+### S3 (Simple Storage Service)
+
+S3 serves dual purposes in this app. The FrontendBucket hosts static frontend files, delivering them globally to users
+with blazing speed, while the MediaBucket manages image uploads for user profiles. With its built-in redundancy and CORS
+configuration, S3 ensures safe and efficient storage for user media, while making file access straightforward.
+
+### DynamoDB
+
+DynamoDB serves as the app’s database, providing high-performance, low-latency storage for user information. Every
+registered user has an entry in DynamoDB, with operations such as creating, reading, updating, and deleting profiles
+handled smoothly. The database’s scalability matches the dynamic growth of the app, ensuring optimal performance
+regardless of the user load.
+
+### CloudFront
+
+CloudFront, a global Content Delivery Network (CDN), accelerates content delivery by caching frontend files closer to
+users. This results in faster load times and ensures a seamless experience, even under heavy traffic. Additionally,
+CloudFront provides enhanced security with HTTPS, protecting user interactions.
 
 ## Lambda Functions
 
