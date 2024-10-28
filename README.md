@@ -12,7 +12,7 @@ powerful serverless technologies, this app is designed for performance, scalabil
 
 <a href="https://dgzyzdn6ci4rp.cloudfront.net" target="_blank">https://dgzyzdn6ci4rp.cloudfront.net</a>
 
-![Screenshot 2024-10-22 at 9.46.31 PM.png](screenshots/frontend/Screenshot%202024-10-22%20at%209.46.31%E2%80%AFPM.png)
+![Screenshot 2024-10-27 at 9.53.44 PM.png](screenshots/frontend/Screenshot%202024-10-27%20at%209.53.44%E2%80%AFPM.png)
 Checkout more [screenshots](#screenshots) down.
 
 ## Effortless Serverless Deployment with CloudFormation
@@ -191,13 +191,13 @@ upload their profile pictures, delivering modern and interactive functionality f
 
 ### Frontend App
 
-![Screenshot 2024-10-22 at 9.45.49 PM.png](screenshots/frontend/Screenshot%202024-10-22%20at%209.45.49%E2%80%AFPM.png)
+![Screenshot 2024-10-27 at 9.54.25 PM.png](screenshots/frontend/Screenshot%202024-10-27%20at%209.54.25%E2%80%AFPM.png)
 ![Screenshot 2024-10-23 at 12.30.28 AM.png](screenshots/frontend/Screenshot%202024-10-23%20at%2012.30.28%E2%80%AFAM.png)
-![Screenshot 2024-10-22 at 9.46.23 PM.png](screenshots/frontend/Screenshot%202024-10-22%20at%209.46.23%E2%80%AFPM.png)
-![Screenshot 2024-10-22 at 9.46.31 PM.png](screenshots/frontend/Screenshot%202024-10-22%20at%209.46.31%E2%80%AFPM.png)
-![Screenshot 2024-10-22 at 9.46.38 PM.png](screenshots/frontend/Screenshot%202024-10-22%20at%209.46.38%E2%80%AFPM.png)
-![Screenshot 2024-10-22 at 9.46.52 PM.png](screenshots/frontend/Screenshot%202024-10-22%20at%209.46.52%E2%80%AFPM.png)
-![Screenshot 2024-10-22 at 9.46.59 PM.png](screenshots/frontend/Screenshot%202024-10-22%20at%209.46.59%E2%80%AFPM.png)
+![Screenshot 2024-10-27 at 9.53.44 PM.png](screenshots/frontend/Screenshot%202024-10-27%20at%209.53.44%E2%80%AFPM.png)
+![Screenshot 2024-10-27 at 9.55.43 PM.png](screenshots/frontend/Screenshot%202024-10-27%20at%209.55.43%E2%80%AFPM.png)
+![Screenshot 2024-10-27 at 10.06.11 PM.png](screenshots/frontend/Screenshot%202024-10-27%20at%2010.06.11%E2%80%AFPM.png)
+![Screenshot 2024-10-27 at 9.57.37 PM.png](screenshots/frontend/Screenshot%202024-10-27%20at%209.57.37%E2%80%AFPM.png)
+![Screenshot 2024-10-27 at 9.56.29 PM.png](screenshots/frontend/Screenshot%202024-10-27%20at%209.56.29%E2%80%AFPM.png)
 
 ## Cloud Formation
 
