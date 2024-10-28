@@ -6,6 +6,7 @@ import { createContext, type Dispatch, type PropsWithChildren, type SetStateActi
 import * as authHelper from '../_helpers';
 import { type UserModel } from '@/auth';
 import { genericErrorMessage, uploadImageToS3 } from '@/utils/API.ts';
+import { slugify } from '@/utils';
 
 const API_URL = import.meta.env.VITE_APP_API_URL;
 
@@ -109,7 +110,7 @@ const AuthProvider = ({ children }: PropsWithChildren) => {
     file: File
   ) => {
     try {
-      const fileName = encodeURIComponent(file.name);
+      const fileName = slugify(file.name);
       const contentType = file.type;
 
       const response = await axios.post(REGISTER_URL, {

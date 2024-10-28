@@ -4,6 +4,7 @@ import axios from 'axios';
 import { createContext, type PropsWithChildren } from 'react';
 import { genericErrorMessage, uploadImageToS3 } from '@/utils/API.ts';
 import { useAuthContext, UserModel } from '@/auth';
+import { slugify } from '@/utils';
 
 const API_URL = import.meta.env.VITE_APP_API_URL;
 
@@ -67,7 +68,7 @@ const UserProvider = ({ children }: PropsWithChildren) => {
 
   const updateImage = async (file: File) => {
     try {
-      const fileName = encodeURIComponent(file.name);
+      const fileName = slugify(file.name);
       const contentType = file.type;
 
       let response = await axios.post(UPDATE_IMAGE_URL, {
